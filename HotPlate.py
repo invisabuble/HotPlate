@@ -69,7 +69,7 @@ class HotPlate:
         # Quickly zero the temperature.
         self.press("set")
 
-        hold_time = self.current_temp * (10/400)
+        hold_time = 2.5 + self.current_temp * (7/400)
 
         # Press the down button and hold it down for 10 seconds.
         self.press("down", hold_time)
