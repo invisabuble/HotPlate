@@ -4,7 +4,7 @@ class HotPlateProgram :
 
     def __init__ (self, **increments) :
         self.increments = increments
-        self.wait_per_degree = 1
+        self.wait_per_degree = 3
 
     def run_program (self) :
 
@@ -15,7 +15,7 @@ class HotPlateProgram :
             print(f"Setting temperature to {temp}. Will hold for {duration}")
 
             wait_time = abs(temp - HP.current_temp) * self.wait_per_degree
-            
+
             HP.set_temp(temp)
 
             # Wait the time for the plate to get to temperature,
@@ -24,4 +24,4 @@ class HotPlateProgram :
 
         print("Program finished!")
 
-        HP.set_temp(0)
+        HP.zero_temp()

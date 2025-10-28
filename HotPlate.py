@@ -18,7 +18,7 @@ class HotPlate:
             GPIO.output(button, GPIO.LOW)
 
 
-    def press (self, button) :
+    def press (self, button, hold_down = 0) :
         # Press a passed button.
 
         GPIO_NUM = self.buttons[button]
@@ -29,7 +29,7 @@ class HotPlate:
             self.current_temp -= 1
 
         GPIO.output(GPIO_NUM, GPIO.HIGH)
-        time.sleep(self.debounce)
+        time.sleep(self.debounce + hold_down)
         GPIO.output(GPIO_NUM, GPIO.LOW)
         time.sleep(self.press_timer)
 
@@ -63,10 +63,15 @@ class HotPlate:
 
         self.change_temp(dT)
 
+    
+    def zero_temp (self) :
+        # Quickly zero the temperature.
+        self.press("set")
 
-    def calibrate (self) :
-        self.current_temp = 400
-        self.set_temp(0)
+        # Press the down button and hold it down for 10 seconds.
+        self.press("down", 10)
+
+        self.press("ent")
 
 
 HP = HotPlate(
