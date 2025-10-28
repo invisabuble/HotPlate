@@ -7,7 +7,7 @@ class HotPlate:
     def __init__ (self, **buttons) :
 
         self.buttons      = buttons
-        self.press_timer  = 0.25
+        self.press_timer  = 0.15
         self.debounce     = 0.1
         self.current_temp = 0
 
@@ -69,8 +69,10 @@ class HotPlate:
         # Quickly zero the temperature.
         self.press("set")
 
+        hold_time = self.current_temp * (10/400)
+
         # Press the down button and hold it down for 10 seconds.
-        self.press("down", 10)
+        self.press("down", hold_time)
 
         self.press("ent")
 
