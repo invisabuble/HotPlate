@@ -34,7 +34,7 @@ class HotPlate:
         time.sleep(self.press_timer)
 
 
-    def change_temp (self, dT, time_per_degree = 0) :
+    def change_temp (self, dT) :
         # Change temperature by a passed amount.
 
         self.press("set")
@@ -52,18 +52,16 @@ class HotPlate:
                 self.current_temp = 0
                 break
 
-            time.sleep(time_per_degree)
-
         self.press("ent")
 
 
-    def set_temp (self, T, time_per_degree = 0) :
+    def set_temp (self, T) :
         # Set the hotplate to a given temp.
         T = abs(T)
 
         dT = T - self.current_temp
 
-        self.change_temp(dT, time_per_degree)
+        self.change_temp(dT)
 
 
     def calibrate (self) :
