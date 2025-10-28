@@ -7,7 +7,7 @@ class HotPlate:
     def __init__ (self, **buttons) :
 
         self.buttons      = buttons
-        self.press_timer  = 0.5
+        self.press_timer  = 0.25
         self.debounce     = 0.1
         self.current_temp = 0
 
