@@ -11,6 +11,7 @@ class HotPlate:
         self.debounce     = 0.1
         self.current_temp = 0
 
+        GPIO.setwarnings(False)
         GPIO.setmode(GPIO.BCM)
 
         for key, button in buttons.items() :
