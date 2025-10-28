@@ -8,7 +8,7 @@ class HotPlateProgram :
 
     def run_program (self) :
 
-        for T, (temp, duration, time_per_degree) in self.increments.items() :
+        for T, (temp, duration) in self.increments.items() :
 
             HP.set_temp(temp)
 
